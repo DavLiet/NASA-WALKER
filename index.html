@@ -84,11 +84,11 @@
 
                      geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-                    var infowindow = new google.maps.InfoWindow({
-                        map: map,
-                        position: geolocate,
-                        content: "You are here"
-                    });
+                  var marker = new google.maps.Marker({
+                                position: geolocate,
+                                 map: map,
+                                 title: 'Hello World!'
+                                   });
 
                     map.setCenter(geolocate);
               document.getElementById('start').innerHTML = geolocate;
