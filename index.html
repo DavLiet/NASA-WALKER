@@ -52,7 +52,7 @@
       <option value="29.555190, -95.086997">Building 3</option>
       <option value="29.555774,-95.086592">Building 4</option>
       <option value="29.555841, -95.085241">Building 5</option>
-      <option value="29.553781, -95.094382">Rocket Parknann</option>
+      <option value="29.553781, -95.094382">Rocket Park</option>
       <option value="29.557236, -95.085980">Building 7</option>
       <option value="29.558426, -95.086441">Building 8</option>
       <option value="29.559019, -95.086252">Building 9</option>
@@ -86,7 +86,8 @@
 
                     var infowindow = new google.maps.InfoWindow({
                         map: map,
-                        position: geolocate
+                        position: geolocate,
+                        content: "You are here"
                     });
 
                     map.setCenter(geolocate);
