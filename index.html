@@ -165,7 +165,8 @@
 
                     var infowindow = new google.maps.InfoWindow({
                         map: map,
-                        position: geolocate
+                        position: geolocate,
+                        content: "You are here"
                     });
 
                     map.setCenter(geolocate); //centers the google map on current position
