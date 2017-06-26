@@ -83,55 +83,26 @@
       <option value="29.555193, -95.090136">Building 13</option>
     </select></li>
         
-         <button id="go" type="button" class="btn btn-success">Go</button>
+        
+        <li>
+        <b>Transport</b>
+        <select id="transport">
+        <option value="DRIVING">Driving</option>
+        <option value="WALKING">Walking</option>
+        </select>
+        </li>
+        
+        
+        <li><button id="go" type="button" class="btn btn-success">Go</button></li> 
+        
+        
+        
+        
     </ul>
   </div>
 </nav>
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-     
-                
-  
-        
-       
-   
-                
-                
-   
-        
-    
-
-
-      
-      
-      
-      
-      
-      
-      
-      
-   
-    
-      
-      
-      
+ 
       
       
     <div id="map"></div>
@@ -141,7 +112,9 @@
         
         
       var geolocate; //set geolocate as a global variable
-    var option;
+      var option;
+      var travel;
+        
        
         
       function initMap() {
@@ -165,8 +138,7 @@
 
                     var infowindow = new google.maps.InfoWindow({
                         map: map,
-                        position: geolocate,
-                        content: "You are here"
+                        position: geolocate
                     });
 
                     map.setCenter(geolocate); //centers the google map on current position
@@ -191,6 +163,8 @@
           
         };
           
+       
+          
           
         document.getElementById('go').addEventListener('click', onChangeHandler);
         //document.getElementById('end').addEventListener('change', onChangeHandler);
@@ -204,9 +178,17 @@
                if(document.getElementById('start').value == "geolocate"){
                    option = geolocate;
                }
-            else{
+                else{
                 option = document.getElementById('start').value;
-            }
+                }
+          
+          
+                if(document.getElementById('transport').value == "DRIVING"){
+                    travel = 'DRIVING';
+                }
+                else{
+                    travel = 'WALKING';
+                }
              
          
          
@@ -215,7 +197,7 @@
         directionsService.route({
           origin:  option,
           destination: document.getElementById('end').value,
-          travelMode: 'WALKING'
+          travelMode: travel,
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
@@ -228,8 +210,6 @@
         
         
         
-        
-    
         
      
         function fail(){
