@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Directions service</title>
@@ -40,15 +42,26 @@
     <div id="floating-panel">
     <b>Start: </b>
         <select id="start">
-        
-        <option value="joplin, mo">my location</option>
-        </select>
+    <option id="myloc" value="geolocate">Curent Location</option>    
+      <option value="29.555137, -95.089203">Building 2</option>
+      <option value="29.555190, -95.086997">Building 3</option>
+      <option value="29.555774,-95.086592">Building 4</option>
+      <option value="29.555841, -95.085241">Building 5</option>
+      <option value="29.553781, -95.094382">Rocket Parknann</option>
+      <option value="29.557236, -95.085980">Building 7</option>
+      <option value="29.558426, -95.086441">Building 8</option>
+      <option value="29.559019, -95.086252">Building 9</option>
+      <option value="29.558944, -95.086114">Building 10</option>
+      <option value="29.558729, -95.087546">Building 11</option>
+      <option value="29.557126, -95.088665">Building 12</option>
+      <option value="29.555193, -95.090136">Building 13</option>
+    </select>
         
        
    
     <b>End: </b>
     <select id="end">
-     <option value="29.555137, -95.089203">Building 2</option>
+      <option value="29.555137, -95.089203">Building 2</option>
       <option value="29.555190, -95.086997">Building 3</option>
       <option value="29.555774,-95.086592">Building 4</option>
       <option value="29.555841, -95.085241">Building 5</option>
@@ -61,6 +74,8 @@
       <option value="29.557126, -95.088665">Building 12</option>
       <option value="29.555193, -95.090136">Building 13</option>
     </select>
+        
+    <button id="go">GO</button>
     </div>
       
       
@@ -69,48 +84,83 @@
       
     <div id="map"></div>
     <script>
-        var geolocate;
+        
+    
+        
+        
+      var geolocate; //set geolocate as a global variable
+    var option;
+       
         
       function initMap() {
           
-          
-        var directionsService = new google.maps.DirectionsService;
+        var directionsService = new google.maps.DirectionsService;      //initializes directionsService and directionsDisplay
         var directionsDisplay = new google.maps.DirectionsRenderer;
-        var map = new google.maps.Map(document.getElementById('map'), {
+        var map = new google.maps.Map(document.getElementById('map'), {    //initializes map
           zoom: 16,
         });
           
-          navigator.geolocation.getCurrentPosition(function(position) {
+       if(navigator.geolocation)  //if you can find the location then...
+       {   
+           
+           
+           
+           navigator.geolocation.getCurrentPosition(function(position) {
 
-                     geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); //sets current position
+               
+                
 
-                  var marker = new google.maps.Marker({
-                                position: geolocate,
-                                 map: map,
-                                 title: 'Hello World!'
-                                   });
+                    var infowindow = new google.maps.InfoWindow({
+                        map: map,
+                        position: geolocate
+                    });
 
-                    map.setCenter(geolocate);
-              document.getElementById('start').innerHTML = geolocate;
+                    map.setCenter(geolocate); //centers the google map on current position
+              
+                    
+                     //document.getElementById('start').innerHTML = geolocate;
+                
+                     
 
-                });
+                }); 
+          
+       }
+          
           
         directionsDisplay.setMap(map);
           
         var onChangeHandler = function() {
+            
+            
           calculateAndDisplayRoute(directionsService, directionsDisplay);
+            
+          
         };
           
           
-        
-        document.getElementById('end').addEventListener('change', onChangeHandler);
+        document.getElementById('go').addEventListener('click', onChangeHandler);
+        //document.getElementById('end').addEventListener('change', onChangeHandler);
           
-          
+         
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+           
+          
+               if(document.getElementById('start').value == "geolocate"){
+                   option = geolocate;
+               }
+            else{
+                option = document.getElementById('start').value;
+            }
+             
+         
+         
+          
+          
         directionsService.route({
-          origin: geolocate,
+          origin:  option,
           destination: document.getElementById('end').value,
           travelMode: 'WALKING'
         }, function(response, status) {
@@ -124,7 +174,15 @@
         
         
         
-        setInterval(initMap(),2000);
+        
+        
+    
+        
+     
+        function fail(){
+            alert("something went wrong");
+        }
+        
         
         
     </script>
@@ -133,3 +191,7 @@
     </script>
   </body>
 </html>
+
+
+
+
