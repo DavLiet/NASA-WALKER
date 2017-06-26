@@ -10,6 +10,8 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+      <!--Bootstrap-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Directions service</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -39,11 +41,17 @@
     </style>
   </head>
   <body>
-    <div id="floating-panel">
-    <b>Start: </b>
+      
+       <nav class="navbar navbar-default" role="navigation">
+  
+  
+  <div class="navbar-collapse collapse">
+    
+    <ul class="nav navbar-nav navbar-middle">
+      <li>  <b>Start: </b>
         <select id="start">
-    <option id="myloc" value="geolocate">Curent Location</option>  
-       <option value="29.552874, -95.093322">Building 110</option>
+    <option id="myloc" value="geolocate">Curent Location</option> 
+    <option value="29.552874, -95.093322">Building 110</option>
       <option value="29.555137, -95.089203">Building 2</option>
       <option value="29.555190, -95.086997">Building 3</option>
       <option value="29.555774,-95.086592">Building 4</option>
@@ -56,13 +64,11 @@
       <option value="29.558729, -95.087546">Building 11</option>
       <option value="29.557126, -95.088665">Building 12</option>
       <option value="29.555193, -95.090136">Building 13</option>
-    </select>
-        
-       
-   
+    </select></li>
+      <li>
     <b>End: </b>
     <select id="end">
-       <option value="29.552874, -95.093322">Building 110</option>
+     <option value="29.552874, -95.093322">Building 110</option>
       <option value="29.555137, -95.089203">Building 2</option>
       <option value="29.555190, -95.086997">Building 3</option>
       <option value="29.555774,-95.086592">Building 4</option>
@@ -75,10 +81,54 @@
       <option value="29.558729, -95.087546">Building 11</option>
       <option value="29.557126, -95.088665">Building 12</option>
       <option value="29.555193, -95.090136">Building 13</option>
-    </select>
+    </select></li>
         
-    <button id="go">GO</button>
-    </div>
+         <button id="go" type="button" class="btn btn-success">Go</button>
+    </ul>
+  </div>
+</nav>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+     
+                
+  
+        
+       
+   
+                
+                
+   
+        
+    
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+   
+    
       
       
       
