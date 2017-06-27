@@ -12,6 +12,11 @@
     <meta charset="utf-8">
       <!--Bootstrap-->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      
     <title>Directions service</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -40,16 +45,44 @@
       }
     </style>
   </head>
-  <body>
+  <body id="hide">
       
-       <nav class="navbar navbar-default" role="navigation">
+      
   
-  
-  <div class="navbar-collapse collapse">
+ 
+        
+        
+        
+        
     
-    <ul class="nav navbar-nav navbar-middle">
-      <li>  <b>Start: </b>
-        <select id="start">
+  
+
+      
+       <div class="container-fluid" id="map"></div>
+    
+      <!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Navigate</button>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      
+    
+        
+        <div class="container-fluid">
+            
+            <div class="row">
+                <div class="col-sm-12">
+                <b>Start: </b>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-sm-12">
+                
+                 
+        <select id="start" class="selectpicker" data-live-search="true" >
     <option id="myloc" value="geolocate">Curent Location</option> 
     <option value="29.552874, -95.093322">Building 110</option>
       <option value="29.555137, -95.089203">Building 2</option>
@@ -64,10 +97,25 @@
       <option value="29.558729, -95.087546">Building 11</option>
       <option value="29.557126, -95.088665">Building 12</option>
       <option value="29.555193, -95.090136">Building 13</option>
-    </select></li>
-      <li>
-    <b>End: </b>
-    <select id="end">
+    </select>
+                
+                
+                </div>
+            </div>
+            
+            
+             <div class="row">
+                <div class="col-sm-12">
+                <b>End: </b>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-sm-12">
+                
+                 
+    <select id="end" class="selectpicker" data-live-search="true">
      <option value="29.552874, -95.093322">Building 110</option>
       <option value="29.555137, -95.089203">Building 2</option>
       <option value="29.555190, -95.086997">Building 3</option>
@@ -81,31 +129,62 @@
       <option value="29.558729, -95.087546">Building 11</option>
       <option value="29.557126, -95.088665">Building 12</option>
       <option value="29.555193, -95.090136">Building 13</option>
-    </select></li>
-        
-        
-        <li>
-        <b>Transport</b>
-        <select id="transport">
+    </select>
+                
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12">
+                
+                  <b>Transport</b>
+        <select id="transport" class="selectpicker">
         <option value="DRIVING">Driving</option>
         <option value="WALKING">Walking</option>
         </select>
-        </li>
+                
+                </div>
+            </div>
+            
+           
+        </div>
         
         
-        <li><button id="go" type="button" class="btn btn-success">Go</button></li> 
         
         
         
         
-    </ul>
-  </div>
-</nav>
+        
+        
+       
       
+   
+        
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        <div class="modal-footer">
+        <button id="go" type="button" class="btn btn-success" data-dismiss="modal">Go</button>
+      </div>
+        
+        
+    </div>
+  </div>
+</div>
+       
+        
+     
  
       
       
-    <div id="map"></div>
+    
     <script>
         
     
@@ -211,6 +290,8 @@
         
         
         
+    
+        
      
         function fail(){
             alert("something went wrong");
@@ -222,6 +303,16 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc4W6N4eBrREAhMYSl-0D6CSa5oFj3_Ug&callback=initMap">
     </script>
+      
+      <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
   </body>
 </html>
 
