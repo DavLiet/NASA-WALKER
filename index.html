@@ -427,7 +427,7 @@
       var geolocate; //set geolocate as a global variable
       var option; //allows the user to either get their location or pick an artificial starting point
       var travel; //allows user to select type of transportation
-        
+      var options; //options will contain the data which enables high accuracy  
         
        
         
@@ -441,6 +441,12 @@
           zoom: 16,
         });
           
+        options = {
+            enableHighAccuracy: true,
+            timeout: Infinity,
+            maximumAge:0
+        };
+          
           
           
           
@@ -448,7 +454,7 @@
        if(navigator.geolocation)  //if you can find the location then...
        {   
            
-           navigator.geolocation.getCurrentPosition(function(position) {
+           navigator.geolocation.watchPosition(function(position) {
 
                     geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); //sets current position
                
