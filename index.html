@@ -464,8 +464,10 @@
                     marker.setPosition(geolocate);
                     marker.setMap(map);
                     map.setCenter(geolocate); //centers the google map on current position
-                }); 
-       }
+                }, function(){
+               handleLocationError(true,marker,map.getCenter());},options);
+           }
+       
           
           
         directionsDisplay.setMap(map);
