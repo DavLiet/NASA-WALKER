@@ -448,23 +448,25 @@
         };
           
           
-    //var marker = new google.maps.Marker; //declare marker here to prevent duplicate markers
+    var marker = new google.maps.Marker; //declare marker here to prevent duplicate markers
           
           
        if(navigator.geolocation)  //if you can find the location then...
        {   
            
-           navigator.geolocation.getCurrentPosition(function(position) {
+           navigator.geolocation.watchPosition(function(position) {
+
                     geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); //sets current position
                
                 
-                    var marker = new google.maps.Marker({  //creates marker at current position
-                    position: geolocate,
-                    map: map,
-                    });
+               
+               
+                    marker.setPosition(geolocate);
+                    marker.setMap(map);
                     map.setCenter(geolocate); //centers the google map on current position
-                }); 
-       }
+                }, function(){
+               handleLocationError(true,marker,map.getCenter());},options);
+           }
        
           
           
