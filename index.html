@@ -451,8 +451,8 @@
     var marker = new google.maps.Marker; //declare marker here to prevent duplicate markers
           
           
-          function error() {
-  alert(`something wong`);
+          function error(err) {
+  alert(err.message);
 };
           
           
