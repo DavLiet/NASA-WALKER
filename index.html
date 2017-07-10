@@ -57,7 +57,7 @@
       }
     </style>
   </head>
-  <body onload="repeating()">
+  <body onload="placeMarker()">
       <!--onload="document.getElementById('nav').click();"-->
       
   
@@ -480,6 +480,14 @@
                 alert("Geolocation not supported");
             }
             
+        }
+        
+        function placeMarker(){
+            var marker = new google.maps.Marker({
+          position: {lat: 29.557282, lng: -95.087339},
+          map: map,
+          title: 'Hello World!'
+        });
         }
         
         function repeating(){
