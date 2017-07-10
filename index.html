@@ -443,7 +443,7 @@
           
         options = {
             enableHighAccuracy: true,
-            timeout: Infinity,
+            timeout: 1000,
             maximumAge:0
         };
           
@@ -451,22 +451,25 @@
     var marker = new google.maps.Marker; //declare marker here to prevent duplicate markers
           
           
+          function error() {
+  alert(`something wong`);
+};
+          
+          
        if(navigator.geolocation)  //if you can find the location then...
        {   
            
-           navigator.geolocation.watchPosition(function(position) {
-
+           navigator.geolocation.getCurrentPosition(function(position) {
                     geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); //sets current position
                
                 
-               
-               
-                    marker.setPosition(geolocate);
-                    marker.setMap(map);
+                    var marker = new google.maps.Marker({  //creates marker at current position
+                    position: geolocate,
+                    map: map,
+                    });
                     map.setCenter(geolocate); //centers the google map on current position
-                }, function(){
-               handleLocationError(true,marker,map.getCenter());},options);
-           }
+                },error,options); 
+       }
        
           
           
