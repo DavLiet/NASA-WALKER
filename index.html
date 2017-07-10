@@ -57,7 +57,7 @@
       }
     </style>
   </head>
-  <body onload="getCurrentPosition()">
+  <body onload="repeating()">
       <!--onload="document.getElementById('nav').click();"-->
       
   
@@ -453,9 +453,9 @@
         
         function getCurrentPosition(){
             options = {
-                enableHighAccuracy: false,
+                enableHighAccuracy: true,
                 timeout: 10000,
-                maximumAge:5000
+                maximumAge:0
             };
             
             
@@ -473,7 +473,7 @@
                         });
                         map.setCenter(geolocate); //centers the google map on current position
                    
-                   alert("marker positioned")
+                  
                     }); 
            }
             else{
@@ -482,9 +482,9 @@
             
         }
         
-//        function repeating(){
-//         setInterval(getCurrentPosition, 1000); 
-//        }
+        function repeating(){
+         setInterval(getCurrentPosition, 1000); 
+       }
 //          
                   ///////////////////////////////
 
