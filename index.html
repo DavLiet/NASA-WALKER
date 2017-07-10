@@ -447,6 +447,7 @@
         
         
         function error(err) {
+            alert(err.code);
             alert(err.message);
           };
         
@@ -454,7 +455,7 @@
         function getCurrentPosition(){
             options = {
                 enableHighAccuracy: true,
-                timeout: 5000,
+                timeout: Infinity,
                 maximumAge:0
             };
             
