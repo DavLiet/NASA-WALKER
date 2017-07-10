@@ -483,11 +483,13 @@
         }
         
         function placeMarker(){
+            if(navigator.geolocation){
             var marker = new google.maps.Marker({
           position: {lat: 29.557282, lng: -95.087339},
           map: map,
           title: 'Hello World!'
         });
+        }
         }
         
         function repeating(){
